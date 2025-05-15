@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/installedAppsFragment">
+
+    <fragment
+        android:id="@+id/installedAppsFragment"
+        android:name="wafltyom.apps.InstalledAppsFragment"
+        android:label="InstalledAppsFragment" >
+        <action
+            android:id="@+id/action_installedAppsFragment_to_aboutAppFragment"
+            app:destination="@id/aboutAppFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="wafltyom.apps.AboutAppFragment"
+        android:label="AboutAppFragment" />
+</navigation>

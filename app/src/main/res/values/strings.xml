@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyApps</string>
+    <string name="installed_apps">Установленные приложения</string>
+    <string name="about_app">О приложении</string>
+    <string name="about_app_name">Название: %1$s</string>
+    <string name="about_app_version">Версия: %1$s</string>
+    <string name="about_app_package_name">Имя пакета: %1$s</string>
+    <string name="about_app_checksum">Контрольная сумма: %1$s</string>
+    <string name="about_app_open">Открыть приложение</string>
+    <string name="title_activity_main2">MainActivity2</string>
+</resources>
