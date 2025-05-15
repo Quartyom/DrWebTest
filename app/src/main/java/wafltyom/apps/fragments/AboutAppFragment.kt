@@ -1,4 +1,4 @@
-package wafltyom.apps
+package wafltyom.apps.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,20 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import wafltyom.apps.MainActivity
+import wafltyom.apps.R
 import wafltyom.apps.databinding.AboutAppBinding
 import java.util.concurrent.Executors
 
-class AboutAppFragment : Fragment() {
+class AboutAppFragment : ViewBindingFragment<AboutAppBinding>() {
     companion object {
         private val executor = Executors.newSingleThreadExecutor()
     }
 
-    private var binding: AboutAppBinding? = null
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = AboutAppBinding.inflate(inflater, container, false)
-        return binding?.root
-    }
+    override fun createBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = AboutAppBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,7 +31,7 @@ class AboutAppFragment : Fragment() {
                 executor.execute { it.requestIconDrawable(requireContext()) }
                 it.calculateApkChecksum()
 
-                binding?.apply {
+                binding.apply {
                     aboutAppName.text = getString(R.string.about_app_name, it.name)
                     aboutAppVersion.text = getString(R.string.about_app_version, it.version)
                     aboutAppPackageName.text =
@@ -56,10 +57,5 @@ class AboutAppFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onDestroyView() {
-        binding = null
-        super.onDestroyView()
     }
 }

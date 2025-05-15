@@ -11,13 +11,12 @@ import wafltyom.apps.databinding.AppListItemBinding
 import java.util.concurrent.Executors
 
 class InstalledAppsAdapter(
-    private val context: Context,
     private val onItemClick: (AppItem) -> Unit
 ) : ListAdapter<AppItem, InstalledAppsAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater: LayoutInflater = LayoutInflater.from(context)
-        return ViewHolder(context, AppListItemBinding.inflate(inflater, parent, false), onItemClick)
+        val inflater: LayoutInflater = LayoutInflater.from(parent.context)
+        return ViewHolder(AppListItemBinding.inflate(inflater, parent, false), onItemClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -25,7 +24,6 @@ class InstalledAppsAdapter(
     }
 
     class ViewHolder(
-        private val context: Context,
         private val binding: AppListItemBinding,
         private val onItemClick: (AppItem) -> Unit
     ) : RecyclerView.ViewHolder(binding.getRoot()) {
@@ -38,10 +36,10 @@ class InstalledAppsAdapter(
             binding.apply {
                 itemAppName.text = appItem.name
                 executor.execute {
-                    appItem.requestIconDrawable(context)
+                    appItem.requestIconDrawable(root.context)
                 }
-                if (context is LifecycleOwner) {
-                    appItem.icon.observe(context as LifecycleOwner) {
+                if (root.context is LifecycleOwner) {
+                    appItem.icon.observe(root.context as LifecycleOwner) {
                         itemIcon.setImageDrawable(it)
                     }
                 }
