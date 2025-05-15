@@ -1,6 +1,5 @@
 package wafltyom.apps
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner

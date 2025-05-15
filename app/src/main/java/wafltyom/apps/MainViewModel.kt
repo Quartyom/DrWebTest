@@ -5,8 +5,6 @@ import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.io.File
-import java.security.MessageDigest
 
 class MainViewModel : ViewModel() {
     val installedApps = MutableLiveData<List<AppItem>>()
